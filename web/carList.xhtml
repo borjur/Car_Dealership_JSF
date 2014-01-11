@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: Car List</title>
+        <h:outputStylesheet name="style.css" library="css"/>
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management: Car List</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:form>
+                        <p><p:commandButton value="Enter a New Car" action="car?faces-redirect=true" ajax='false'/></p>
+                        <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+
+                        <p:dataTable var="car" value="#{carTableBean.carsList}" id="carList" editable="true" 
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+                                     rowsPerPageTemplate="5,10,15,20" lazy="true">
+
+                            <p:growl id="editMessages" showDetail="true"/> 
+                            <p:ajax event="rowEdit" listener="#{carTableBean.onEdit}" update="editMessages"/>  
+                            <p:ajax event="rowEditCancel" listener="#{carTableBean.onCancel}" update="editMessages"/> 
+
+                            <p:column headerText="VIN">
+                                <h:outputText value="#{car.VIN}" />  
+                            </p:column>
+                            <!--<p:column headerText="VIN">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.VIN}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.VIN}" style="width:100%" maxlength="17"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>-->
+                            <p:column headerText="Make">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.make}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.make}" style="width:100%" maxlength="30"
+                                                     required="true" requiredMessage="Please enter make"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Model">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.model}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.model}" style="width:100%" maxlength="30"
+                                                     required="true" requiredMessage="Please enter model"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Year">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.modelYear}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.modelYear}" style="width:100%" maxlength="4"
+                                                     required="true" requiredMessage="Please enter year"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Mileage">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.mileage}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.mileage}" style="width:100%" maxlength="30"
+                                                     required="true" requiredMessage="Please enter mileage"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Color">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.color}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.color}" style="width:100%" maxlength="30"
+                                                     required="true" requiredMessage="Please enter color"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Motor">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.motor}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.motor}" style="width:100%" maxlength="30"
+                                                     required="true" requiredMessage="Please enter motor"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="City">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{car.city}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{car.city}" style="width:100%" maxlength="30"
+                                                     required="true" requiredMessage="Please enter city"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Sold">
+                                <!-- Decided not to allow them to change Sold information -->
+                                <!--<p:cellEditor>  
+                                    <f:facet name="output">  -->
+                                        <h:outputText value="#{car.sold}" />  
+                                    <!--</f:facet>  
+                                    <f:facet name="input">  
+                                        <p:selectBooleanCheckbox value="#{car.sold}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor>-->
+                            </p:column>
+                            <p:column headerText="Purchaser">
+                                <!-- Decided not to allow them to change Sold information -->
+                                <!--<p:cellEditor>  
+                                    <f:facet name="output">-->
+                                        <h:outputText value="#{car.purchaser_firstName} #{car.purchaser_lastName}" />
+                                    <!--</f:facet>  
+                                    <f:facet name="input">  
+                                        <p:selectOneMenu id="clientInputText" value="#{salesRecordBean.clientID}">  
+                                            <f:selectItems value="#{clientBean.clientList}" var="client" 
+                                                           itemLabel="#{client}" itemValue="#{client}" />  
+                                        </p:selectOneMenu> 
+                                    </f:facet>  
+                                </p:cellEditor> -->
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Edit</f:facet>
+                                <p:rowEditor /> 
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+
+</html>

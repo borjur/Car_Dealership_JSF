@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>SANDBOX PAGE! DO NOT USE IN ACTUAL PROJECT</title> 
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>SANDBOX PAGE! DO NOT USE IN ACTUAL PROJECT</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:outputLink value="http://www.primefaces.org/showcase/ui/home.jsf">http://www.primefaces.org/showcase/ui/home.jsf</h:outputLink>
+                    <h:form id ="inputForm">
+                        <h:panelGrid columns="3">
+                            <h:outputText value="Built in JSF:"/>
+                            <h:inputText id="firstNameInputText" required="true"
+                                         requiredMessage="Please enter first name"
+                                         value="#{clientBean.firstName}" maxlength="30">
+                            </h:inputText>
+                            <h:message for="firstNameInputText" styleClass="error"/>
+                            
+                            <h:outputText value="PrimeFaces:"/>
+                            <p:inputText id="streetInputText" required="true"
+                                         requiredMessage="Please enter the street address"
+                                         value="#{clientBean.street}" maxlength="150">
+                            </p:inputText>
+                            <h:message for="streetInputText" styleClass="error"/>
+                            
+                            <h:outputText value="Birth Date: " />  
+                            <p:inputMask value="#{clientBean.birthDate}" mask="99/99/9999"/>
+                            
+                            <br></br>
+                            
+                            <h:outputText value="Basic Usage: " />  
+                            <p:selectOneMenu value="#{clientBean.firstName}">  
+                                <f:selectItem itemLabel="Select One" itemValue="" />  
+                                <f:selectItem itemLabel="Test name 1" itemValue="1" />  
+                                <f:selectItem itemLabel="Test name 2" itemValue="2" />  
+                                <f:selectItem itemLabel="Test name 3" itemValue="3" />  
+                            </p:selectOneMenu>  
+                            
+                            
+                        </h:panelGrid>
+                        
+                        <h:commandButton id="builtInSave" value="JSF Command Button"
+                                         action="#{clientBean.save}"/>
+                        <br></br>
+                        
+                        <p:commandButton id="saveButton" value="PrimeFaces Command Button"
+                                         action="#{clientBean.save}"/>
+                        <p:tooltip for="saveButton" value="This tooltip uses clip/explode effects for the animation" showEffect="clip" hideEffect="explode" />
+                        
+                        <br></br>
+                        <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+                    </h:form>
+                    
+                    
+                    <h:form id="tableForm">
+
+                        <br></br>
+                        <br></br>
+                        Apparently this table below can't take a ResultSet object and make it work...
+                        <br></br>
+                        I'll Have to come up with a different way to do this...
+                        
+                        
+                        
+
+                        <p:dataTable var="car" value="#{carBean.cars}" id="carList" editable="true" paginator="true" rows="10">
+
+                            <f:facet name="header">In-Cell Editing</f:facet>
+
+                            <p:ajax event="rowEdit" listener="#{carBean.onEdit}" />
+                            <p:ajax event="rowEditCancel" listener="#{carBean.onCancel}" />
+                            
+                            <p:column headerText="VIN" style="width:30%">
+                                <p:cellEditor>
+                                    <f:facet name="output">
+                                        <h:outputText value="#{car.vin}" />
+                                    </f:facet>
+                                    <f:facet name="input">
+                                        <p:inputText value="#{car.vin}" style="width:100%"/>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Make" style="width:20%">
+                                <p:cellEditor>
+                                    <f:facet name="output">
+                                        <h:outputText value="#{car.make}" />
+                                    </f:facet>
+                                    <f:facet name="input">
+                                        <p:inputText value="##{car.make}" style="width:100%" label="Make"/>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column style="width:6%">
+                                <p:rowEditor />
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </h:form>
+                    
+                </ui:insert>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

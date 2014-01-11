@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: Client List</title>
+        <h:outputStylesheet name="style.css" library="css"/> 
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management: Client List</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:form>
+                        <p><p:commandButton value="Enter a New Client" action="client?faces-redirect=true" ajax='false'/></p>
+                        <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+
+                        <p:dataTable value="#{clientTableBean.clientsList}" var="client" id="clientList" editable="true"
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+                                     rowsPerPageTemplate="5,10,15,20" lazy="true">
+
+                            <p:growl id="editMessages" showDetail="true"/> 
+                            <p:ajax event="rowEdit" listener="#{clientTableBean.onEdit}" update="editMessages"/> 
+                            <p:ajax event="rowEditCancel" listener="#{clientTableBean.onCancel}" update="editMessages"/>
+
+                            <p:column headerText="Client ID">
+                                <h:outputText value="#{client.clientID}" />
+                            </p:column>
+
+                            <p:column headerText="First Name">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.firstName}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.firstName}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter first name"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Last Name">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.lastName}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.lastName}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter last name"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Street">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.street}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.street}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter street"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="City">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.city}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.city}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter city"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="State">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.state}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.state}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter state"
+                                                     maxlength="2"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Zip code">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.zipcode}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.zipcode}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter zipcode"
+                                                     maxlength="5"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Birth Date">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.birthDate}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputMask id="birthDateInputText" value="#{client.birthDate}"
+                                                     required="true" requiredMessage="Please enter birth date"
+                                                     mask="99/99/9999"/>
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Email">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{client.email}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{client.email}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter email"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Edit</f:facet>
+                                <p:rowEditor />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+
+</html>

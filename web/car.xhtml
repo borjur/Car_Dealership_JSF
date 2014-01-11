@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: New Car</title>
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management: New Car</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <div>TODO: Add validation so that a duplicate VIN can't be entered which throws and axception</div>
+                    <h:form>
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="VIN:"/>
+                            <p:inputText id="vinInputText" required="true"
+                                         requiredMessage="Please enter VIN"
+                                         value="#{carBean.VIN}" maxlength="17">
+                            </p:inputText>
+                            <p:message for="vinInputText"/>
+
+                            <h:outputText value="Make:"/>
+                            <p:inputText id="makeInputText" required="true"
+                                         requiredMessage="Please enter make"
+                                         value="#{carBean.make}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="makeInputText"/>
+
+                            <h:outputText value="Model:"/>
+                            <p:inputText id="modelInputText" required="true"
+                                         requiredMessage="Please enter model"
+                                         value="#{carBean.model}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="modelInputText"/>
+
+                            <h:outputText value="Model Year:"/>
+                            <p:inputText id="modelYearInputText" required="true"
+                                         requiredMessage="Please enter model year"
+                                         value="#{carBean.modelYear}" maxlength="4">
+                            </p:inputText>
+                            <p:message for="modelYearInputText"/>
+
+                            <h:outputText value="Mileage:"/>
+                            <p:inputText id="mileageInputText" required="true"
+                                         requiredMessage="Please enter mileage"
+                                         value="#{carBean.mileage}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="mileageInputText"/>
+                            
+                            <h:outputText value="Color:"/>
+                            <p:inputText id="colorInputText" required="true"
+                                         requiredMessage="Please enter color"
+                                         value="#{carBean.color}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="colorInputText"/>
+
+                            <h:outputText value="Motor:"/>
+                            <p:inputText id="motorInputText" required="true"
+                                         requiredMessage="Please enter motor"
+                                         value="#{carBean.motor}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="motorInputText"/>
+
+                            <h:outputText value="City:"/>
+                            <p:inputText id="cityInputText" required="true"
+                                         requiredMessage="Please enter city"
+                                         value="#{carBean.city}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="cityInputText"/>
+<!-- Don't need these now that elling is handled by its own page -->
+<!--                            <h:outputText value="Sold:"/>
+                            <p:selectBooleanCheckbox value="#{carBean.sold}" />
+                            <br></br>
+
+                            <h:outputText value="Purchaser ID:"/>
+                            <p:inputText id="purchaserInputText" required="false"
+                                         value="#{carBean.purchaserID}" maxlength="30" >
+                            </p:inputText>
+                            <p:message for="purchaserInputText"/>
+                            <p:tooltip for="purchaserInputText" value="Leave as 0 if car is not sold"/>-->
+
+                        </h:panelGrid>
+                        <p:commandButton value="Save New Car"
+                                         action="#{carBean.save}" ajax='false'/>
+                    </h:form>
+                    <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+
+</html>

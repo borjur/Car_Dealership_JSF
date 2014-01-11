@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form>
+            <p:growl id="messages" showDetail="true"/>
+            <h3>Client Actions:</h3>
+            <p>
+                <p:commandButton value="Enter New Client" action="client?faces-redirect=true" ajax='false'/>
+                <p:commandButton value="List Clients" action="clientList?faces-redirect=true" ajax='false'/>
+            </p>
+            <h3>Seller Actions:</h3>
+            <p>
+                <p:commandButton value="Enter New Seller" action="seller?faces-redirect=true" ajax='false'/>
+                <p:commandButton value="List Sellers" action="sellerList?faces-redirect=true" ajax='false'/>
+                
+            </p>
+            <h3>Car Actions:</h3>
+            <p>
+                <p:commandButton value="Enter New Car" action="car?faces-redirect=true" ajax='false'/>
+                <p:commandButton value="List Cars" action="carList?faces-redirect=true" ajax='false'/>
+                <p:commandButton value="Sell a Car" action="carSell?faces-redirect=true" ajax='false'/>
+            </p>
+            <h3>Records:</h3>
+            <p>
+                <p:commandButton value="Sales Records" action="records_sales?faces-redirect=true" ajax='false'/>
+                <p:commandButton value="Sales By Seller" action="records_salesBySeller?faces-redirect=true" ajax='false'/>
+            </p>
+            <h3>Admin:</h3>
+            <p>
+                <p:commandButton value="Admin Functions" action="admin?faces-redirect=true" ajax='false'/>
+            </p>
+            <h:outputLink value="knownIssues.xhtml">Known Issues</h:outputLink>
+        </h:form>
+    </cc:implementation>
+</html>

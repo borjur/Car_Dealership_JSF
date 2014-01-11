@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: Sell a Car</title> 
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management: Sell a Car</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:form>
+                        <h:panelGrid columns="3">
+                            <h:outputText value="Seller: " />  
+                            <p:selectOneMenu id="sellerInputText" value="#{salesRecordBean.sellerID}" 
+                                             required="true" requiredMessage="Please select a Seller">  
+                                <f:selectItems value="#{sellerBean.sellerList}" />  
+                            </p:selectOneMenu> 
+                            <p:message for="sellerInputText"/>  
+                            
+                            <h:outputText value="Client: " />  
+                            <p:selectOneMenu id="clientInputText" value="#{salesRecordBean.clientID}" 
+                                             required="true" requiredMessage="Please select a Client">  
+                                <f:selectItems value="#{clientBean.clientList}" />  
+                            </p:selectOneMenu> 
+                            <p:message for="clientInputText"/>
+                            
+                            <h:outputText value="Car: " />  
+                            <p:selectOneMenu id="carInputText" value="#{salesRecordBean.carVIN}" 
+                                             required="true" requiredMessage="Please select a Car">  
+                                <f:selectItems value="#{carBean.unsoldCarList}" />  
+                            </p:selectOneMenu> 
+                            <p:message for="carInputText"/>
+
+                            <h:outputText value="Sale Date (mm/dd/yyyy):"/>
+                            <p:inputMask id="dateInputText" required="true"
+                                         requiredMessage="Please enter Date"
+                                         value="#{salesRecordBean.date}" mask="99/99/9999">
+                            </p:inputMask>
+                            <p:message for="dateInputText"/>
+
+                            <h:outputText value="Amount:"/>
+                            <p:inputText id="amountInputText" required="true"
+                                         requiredMessage="Please enter Amount"
+                                         value="#{salesRecordBean.amount}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="amountInputText"/>
+
+                        </h:panelGrid>
+                        <p:commandButton value="Save Record" action="#{salesRecordBean.save}" ajax='false'/>
+                    </h:form>
+                    <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+
+</html>

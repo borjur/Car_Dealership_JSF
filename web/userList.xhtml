@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: Admin - System User List</title>
+        <h:outputStylesheet name="style.css" library="css"/> 
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management: Admin - System User List</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+
+                    <h:form>
+                        <p><p:commandButton value="Create a New User" action="userNew?faces-redirect=true" ajax='false'/></p>
+                        <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+
+                        <p:dataTable value="#{userData.systemUsersList}" var="record" id="recordsList"
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+                                     rowsPerPageTemplate="5,10,15,20" lazy="true">
+
+                            <p:growl id="editMessages" showDetail="true"/> 
+                            <!-- <p:ajax event="rowEdit" listener="#{salesRecordTableBean.onEdit}" update="editMessages"/>  
+                            <p:ajax event="rowEditCancel" listener="#{salesRecordTableBean.onCancel}" update="editMessages"/> -->
+
+                            <p:column headerText="Username">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{record.name}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{record.name}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter username"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Password">
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{record.password}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{record.password}" style="width:100%"
+                                                     required="true" requiredMessage="Please enter password"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Active">
+                                <p:cellEditor>  
+                                    <f:facet name="output">
+                                        <h:outputText value="#{record.active}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:selectBooleanCheckbox value="#{record.active}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+</html>

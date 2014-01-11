@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: Known Issues</title> 
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <ul>
+                        <li>All sales are final! (Eventually this will be changed so that sales information can be
+                        edited under certain circumstances)</li>
+                        <br/>
+                        <li>When editing a row that contains a dropdown (either a client or seller) the page doesn't
+                        refresh automatically after the change happens. Either you have to click edit and then cancel
+                        or you have to reload the page using the side menu link.</li>
+                        <br/>
+                        <li>In Google Chrome, when you try and edit an entry in a table, it expands the columns
+                        and pushes them off the screen causing you to have to scroll horizontally</li>
+                        <br/>
+                        <li>Some confirmation messages are not being displayed when they should on a successful
+                        edit inside a table.</li>
+                    </ul>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+
+</html>

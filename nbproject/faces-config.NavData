@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="OLD_Pages/sellerList_OLD.xhtml" x="44" y="104" zoom="true"/>
+        <Node id="car.xhtml" x="124" y="413" zoom="true"/>
+        <Node id="index.jsp" x="583" y="52" zoom="true"/>
+        <Node id="resources/ezcomp/Side_Menu.xhtml" x="892" y="100" zoom="true"/>
+        <Node id="OLD_Pages/records_sales_OLD.xhtml" x="45" y="43" zoom="true"/>
+        <Node id="carList.xhtml" x="122" y="443" zoom="true"/>
+        <Node id="records_sales.xhtml" x="677" y="322" zoom="true"/>
+        <Node id="seller.xhtml" x="110" y="285" zoom="true"/>
+        <Node id="success.jsp" x="736" y="240" zoom="true"/>
+        <Node id="OLD_Pages/clientList_OLD.xhtml" x="45" y="74" zoom="true"/>
+        <Node id="sellerList.xhtml" x="108" y="314" zoom="true"/>
+        <Node id="clientList.xhtml" x="102" y="575" zoom="true"/>
+        <Node id="failure.jsp" x="502" y="240" zoom="true"/>
+        <Node id="resources/ezcomp/Copyright_Footer.xhtml" x="892" y="68" zoom="true"/>
+        <Node id="index.xhtml" x="58" y="219" zoom="true"/>
+        <Node id="login.jsp" x="595" y="122" zoom="true"/>
+        <Node id="client.xhtml" x="103" y="548" zoom="true"/>
+        <Node id="SANDBOX.xhtml" x="409" y="473" zoom="true"/>
+        <Node id="carSell.xhtml" x="123" y="474" zoom="true"/>
+        <Node id="OLD_Pages/carList_OLD.xhtml" x="42" y="135" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

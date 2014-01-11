@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ez="http://java.sun.com/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Car Dealership: New Client</title> 
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <h2>Car Dealership Management: New Client</h2>
+            </ui:insert>
+        </div>
+
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ez:Side_Menu/>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:form>
+                        <h:panelGrid columns="3">
+                            <h:outputText value="First name:"/>
+                            <p:inputText id="firstNameInputText" required="true"
+                                         requiredMessage="Please enter first name"
+                                         value="#{clientBean.firstName}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="firstNameInputText"/>
+                            
+                            <h:outputText value="Last name:"/>
+                            <p:inputText id="lastNameInputText" required="true"
+                                         requiredMessage="Please enter last name"
+                                         value="#{clientBean.lastName}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="lastNameInputText"/>
+                            
+                            <h:outputText value="Street:"/>
+                            <p:inputText id="streetInputText" required="true"
+                                         requiredMessage="Please enter the street address"
+                                         value="#{clientBean.street}" maxlength="150">
+                            </p:inputText>
+                            <p:message for="streetInputText"/>
+                            
+                            <h:outputText value="City:"/>
+                            <p:inputText id="cityInputText" required="true"
+                                         requiredMessage="Please enter the city"
+                                         value="#{clientBean.city}" maxlength="30">
+                            </p:inputText>
+                            <p:message for="cityInputText"/>
+                            
+                            <h:outputText value="State Abbreviation:"/>
+                            <p:inputText id="stateInputText" required="true"
+                                         requiredMessage="Please enter state"
+                                         value="#{clientBean.state}" maxlength="2">
+                            </p:inputText>
+                            <p:message for="stateInputText"/>
+                            
+                            <h:outputText value="Zipcode:"/>
+                            <p:inputText id="zipcodeInputText" required="true"
+                                         requiredMessage="Please enter zipcode"
+                                         value="#{clientBean.zipcode}" maxlength="5">
+                            </p:inputText>
+                            <p:message for="zipcodeInputText"/>
+                            
+                            <h:outputText value="Birth Date (mm/dd/yyyy):"/>
+                            <p:inputMask id="birthDateInputText" required="true"
+                                         requiredMessage="Please enter birth date"
+                                         value="#{clientBean.birthDate}"
+                                         mask="99/99/9999"/>
+                            <p:message for="birthDateInputText"/>
+                            
+                            <h:outputText value="Email:"/>
+                            <p:inputText id="emailInputText" required="true"
+                                         requiredMessage="Please enter an email"
+                                         value="#{clientBean.email}" maxlength="50">
+                            </p:inputText>
+                            <p:message for="emailInputText"/>
+                        
+                        </h:panelGrid>
+                        <p:commandButton id="saveButton" value="Save New Client"
+                                         action="#{clientBean.save}" ajax='false'/>
+                        <br></br>
+                        <h:outputLink value="index.xhtml">Return to Main Page</h:outputLink>
+                    </h:form>
+                </ui:insert>
+            </div>
+        </div>
+        <ez:Copyright_Footer/>
+    </h:body>
+
+</html>
