@@ -17,7 +17,7 @@ import javax.sql.rowset.CachedRowSet;
 
 /**
  *
- * @author Christopher Nash
+ * @author Boris Jurosevic
  */
 @ManagedBean(name = "clientBean")
 public class ClientBean
