@@ -18,7 +18,7 @@ import javax.sql.rowset.CachedRowSet;
 
 /**
  *
- * @author Agape
+ * @author Boris Jurosevic
  */
 @ManagedBean( name="carBean" )
 public class CarBean
