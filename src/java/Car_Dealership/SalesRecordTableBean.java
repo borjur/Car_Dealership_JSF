@@ -16,7 +16,7 @@ import org.primefaces.event.RowEditEvent;
 
 /**
  *
- * @author Christopher Nash
+ * @author Boris Jurosevic
  */
 @ManagedBean
 public class SalesRecordTableBean 
